@@ -17,8 +17,20 @@ ACCEPTED_MAR_CHANNEL_IDS=release
 # The MAR_CHANNEL_ID must not contain the following 3 characters: ",\t "
 MAR_CHANNEL_ID=release
 
-MOZ_APP_VERSION=`$PYTHON ${_topsrcdir}/../build/version2k.py --version ${_topsrcdir}/../navigator/config/version.txt`
-MOZ_APP_VERSION_DISPLAY=$MOZ_APP_VERSION
+# For Navigator we want to use 52.9.YYYY.MM.DD as MOZ_APP_VERSION in release
+# builds so add-on developers have something to target while maintaining
+# Pale Moon compatiblity.
+# To enable add "export NAV_VERSION=1" to the .mozconfig file.
+# However, this will cause a full rebuild at 00:00 UTC every day so
+# don't export the variable if you are in development or don't care.
+# When not exported we fall back the value in the version*.txt file.
+if test -n "$NAV_VERSION" ; then
+    MOZ_APP_VERSION=52.9.`date --utc '+%Y.%m.%d'`
+    MOZ_APP_VERSION_DISPLAY=`date --utc '+%Y.%m.%d'`
+else
+    MOZ_APP_VERSION=`$PYTHON ${_topsrcdir}/../build/version2k.py --version ${_topsrcdir}/../mail/config/version.txt`
+    MOZ_APP_VERSION_DISPLAY=$MOZ_APP_VERSION
+fi
 
 MOZ_APP_ID={a3210b97-8e8a-4737-9aa0-aa0e607640b9}
 MOZ_PROFILE_MIGRATOR=1

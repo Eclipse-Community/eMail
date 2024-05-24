@@ -1,6 +1,6 @@
-WIN32_MODULE_COMPANYNAME=Binary Outcast
-WIN32_MODULE_TRADEMARKS=@MOZ_APP_DISPLAYNAME@ is a Trademark of Open Source Contributors.
-WIN32_MODULE_COPYRIGHT=©Open Source Contributors, Binary Outcast, and Mozilla Developers, according to the MPL 2.0 licenses, as applicable.
+WIN32_MODULE_COMPANYNAME=Eclipse Community
+WIN32_MODULE_TRADEMARKS=@MOZ_APP_DISPLAYNAME@ logos are copyrights of Eclipse Community.
+WIN32_MODULE_COPYRIGHT=©Eclipse Community, Binary Outcast, and Mozilla Developers, according to the MPL 2.0 licenses, as applicable.
 WIN32_MODULE_PRODUCTVERSION=@MOZ_APP_WINVERSION@
 WIN32_MODULE_PRODUCTVERSION_STRING=@MOZ_APP_VERSION@
 WIN32_MODULE_DESCRIPTION=@MOZ_APP_DISPLAYNAME@ email client

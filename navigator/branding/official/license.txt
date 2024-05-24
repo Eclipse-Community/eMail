@@ -1,0 +1,43 @@
+MOZILLA PUBLIC LICENSE COMPLIANCE DECLARATION
+-------------------
+1. Source Code for the software used under the following license agreement, unless otherwise stated, is released under the Mozilla Public License 2.0. You can obtain a copy of the MPL 2.0 at http://mozilla.org/MPL/2.0/.
+
+2. The Source Code Form as defined by the MPL 2.0 may be obtained at https://github.com/binaryoutcast/binoc-central/. If the source code is, for any reason, unavailable at that location, you may send an electronic mail (E-mail) message to <support@binaryoutcast.com> requesting a copy of the Source Code Form pursuant to MPL 2.0 Section 3.2 (a).
+
+3. Under the MPL 2.0 Section 3.2 (b) the following license terms are hereby established.
+
+BINARY OUTCAST BOREALIS NAVIGATOR END-USER LICENSE AGREEMENT
+-------------------
+The accompanying executable code version of Binary Outcast Borealis Navigator and related documentation (the "Product") is made available to you under the terms of this Binary Outcast Borealis Navigator End-User License Agreement (the "Agreement"). BY CLICKING THE "ACCEPT" BUTTON, OR BY INSTALLING OR USING THE PRODUCT, YOU ARE CONSENTING TO BE BOUND BY THE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS AND CONDITIONS OF THE AGREEMENT, DO NOT CLICK THE "ACCEPT" BUTTON, AND DO NOT INSTALL OR USE ANY PART OF THE PRODUCT.
+
+DURING THE PRODUCT'S INSTALLATION PROCESS, AND AT LATER TIMES, YOU MAY BE GIVEN THE OPTION OF INSTALLING ADDITIONAL COMPONENTS FROM THIRD-PARTY SOFTWARE PROVIDERS. THE INSTALLATION AND USE OF THOSE THIRD-PARTY COMPONENTS MAY BE GOVERNED BY ADDITIONAL LICENSE AGREEMENTS.
+
+1. LICENSE GRANT.
+Binary Outcast grants you a non-exclusive license to use the executable code version of the Product. This Agreement will also govern any software upgrades provided by Binary Outcast that replace and/or supplement the original Product, unless such upgrades are accompanied by a separate license, in which case the terms of that license will govern.
+
+2. TERMINATION.
+If you breach this Agreement, your right to use the Product will terminate immediately and without notice, but all provisions of this Agreement except the License Grant (Paragraph 1 and 4) will survive termination and continue to be in effect. Upon termination, you must destroy all copies of the Product.
+
+3. PROPRIETARY RIGHTS.
+Portions of the Product are available in source code form under the terms of the Mozilla Public License 2.0 and other open source licenses (collectively, "Open Source Licenses"). Nothing in this Agreement will be construed to limit any rights granted under the Open Source Licenses. Subject to the foregoing, Binary Outcast, for itself and on behalf of its licensors, hereby reserves all intellectual property rights in the Product, except for the rights expressly granted in this Agreement. You may not remove or alter any trademark, logo, copyright or other proprietary notice in or on the Product. This license does not grant you any right to use the trademarks, service marks or logos of Binary Outcast or its licensors.
+
+4. DISTRIBUTION.
+(a) Binary Outcast grants you permission to distribute executable code versions of the Product providing they are UNALTERED or otherwise identical to those provided by Binary Outcast itself.
+(b) In the case of open source operating systems building executable code versions from source, express permission must be obtained from Binary Outcast before any such executable code version containing intellectual property may be distributed through any medium.
+(c) Binary Outcast reserves the right to revoke this permission at any time for any reason. If this permission is revoked, you must remove the executable code version and all references to it from the distribution medium.
+
+5. DISCLAIMER OF WARRANTY.
+THE PRODUCT IS PROVIDED "AS IS" WITH ALL FAULTS. TO THE EXTENT PERMITTED BY LAW, BINARY OUTCAST AND BINARY OUTCAST'S DISTRIBUTORS, LICENSORS HEREBY DISCLAIM ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES THAT THE PRODUCT IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE AND NON-INFRINGING. YOU BEAR ENTIRE RISK AS TO SELECTING THE PRODUCT FOR YOUR PURPOSES AND AS TO THE QUALITY AND PERFORMANCE OF THE PRODUCT. THIS LIMITATION WILL APPLY NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY REMEDY. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF IMPLIED WARRANTIES, SO THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+6. LIMITATION OF LIABILITY.
+EXCEPT AS REQUIRED BY LAW, BINARY OUTCAST AND ITS DISTRIBUTORS, DIRECTORS, LICENSORS, CONTRIBUTORS AND AGENTS WILL NOT BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES ARISING OUT OF OR IN ANY WAY RELATING TO THIS AGREEMENT OR THE USE OF OR INABILITY TO USE THE PRODUCT, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, LOST PROFITS, LOSS OF DATA, AND COMPUTER FAILURE OR MALFUNCTION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND REGARDLESS OF THE THEORY (CONTRACT, TORT OR OTHERWISE) UPON WHICH SUCH CLAIM IS BASED. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL, CONSEQUENTIAL OR SPECIAL DAMAGES, SO THIS EXCLUSION AND LIMITATION MAY NOT APPLY TO YOU.
+
+7. MISCELLANEOUS.
+(a) This Agreement constitutes the entire agreement between Binary Outcast and you concerning the subject matter hereof, and it may only be modified by Matt A. Tobin of Binary Outcast.
+(b) Except to the extent where applicable law, if any, provides otherwise, this Agreement will be governed by the laws of the state of Indiana, U.S.A., excluding its conflict of law provisions.
+(c) This Agreement will not be governed by the United Nations Convention on Contracts for the International Sale of Goods.
+(d) If any part of this Agreement is held invalid or unenforceable, that part will be construed to reflect the parties' original intent, and the remaining portions will remain in full force and effect.
+(e) A waiver by either party of any term or condition of this Agreement or any breach thereof, in any one instance, will not waive such term or condition or any subsequent breach thereof.
+(f) Except as required by law, the controlling language of this Agreement is English.
+(g) You may assign your rights under this Agreement to any party that consents to, and agrees to be bound by, its terms; Binary Outcast may assign its rights under this Agreement without condition.
+(h) This Agreement will be binding upon and will inure to the benefit of the parties, their successors and permitted assigns.
