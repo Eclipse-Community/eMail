@@ -55,7 +55,7 @@
           </description>
 #endif
           <description class="text-blurb" id="communityDesc">
-            &community.start2;<label class="text-link" onclick="openURL('http://rtfreesoft.blogspot.com/');" oncommand="openUILink(this.getAttribute('href'), event);">&community.mozillaLink;</label>&community.middle2;
+            &community.start2;<label class="text-link" onclick="openURL('http://eclipse.cx/');" oncommand="openUILink(this.getAttribute('href'), event);">&community.mozillaLink;</label>&community.middle2;
           </description>
           <description class="text-blurb">
             &trademarkInfo.part1;

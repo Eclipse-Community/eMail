@@ -1,0 +1,28 @@
+mk_add_options MOZ_MAKE_FLAGS="-j11"
+
+ac_add_options --enable-release
+ac_add_options --enable-project=mail
+ac_add_options --enable-optimize="-O2 -Ob2ity -GS- -GFAT -Qpar -Qfast_transcendentals -openmp"
+ac_add_options --enable-jemalloc
+ac_add_options --enable-official-branding
+#ac_add_options --enable-shared-js
+#ac_add_options --enable-devtools
+#ac_add_options  --enable-debug
+ac_add_options  --disable-debug
+ac_add_options  --enable-strip
+#ac_add_options --disable-skia
+ac_add_options --disable-maintenance-service
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests
+#ac_add_options --disable-mochitests
+ac_add_options --disable-js-lto
+ac_add_options --enable-jxl
+export MOZ_SOURCE_CHANGESET=iloveneedingtobodgechangesetfornoreason
+
+# Branding
+ac_add_options --with-app-name=eMail
+ac_add_options --with-app-basename=eMail
+ac_add_options --with-distribution-id=com.eclipse.email
+
+WIN32_REDIST_DIR=$VCINSTALLDIR/Redist/MSVC/14.16.27012/x86/Microsoft.VC141.CRT
