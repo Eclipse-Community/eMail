@@ -9,6 +9,9 @@
 [scriptable, uuid(95F53544-F445-48d1-B3A2-D54AA020BC3D)]
 interface nsIShellService : nsISupports
 {
+  //MYPAL PORTABLE CODE
+  boolean isPortableMode();
+  void cancelPortableMode();
   /**
    * app types we can be registered to handle
    */
