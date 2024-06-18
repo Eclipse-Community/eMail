@@ -919,25 +919,7 @@ Function .onInit
   StrCpy $LANGUAGE 0
   ${SetBrandNameVars} "$EXEDIR\core\distribution\setup.ini"
 
-  ; Don't install on systems that don't support SSE2. The parameter value of
-  ; 10 is for PF_XMMI64_INSTRUCTIONS_AVAILABLE which will check whether the
-  ; SSE2 instruction set is available.
-  System::Call "kernel32::IsProcessorFeaturePresent(i 10)i .R7"
-
 !ifdef HAVE_64BIT_BUILD
-  ; Restrict x64 builds from being installed on x86 and pre Win7
-  ${Unless} ${RunningX64}
-  ${OrUnless} ${AtLeastWin7}
-    ${If} "$R7" == "0"
-      strCpy $R7 "$(WARN_MIN_SUPPORTED_OSVER_CPU_MSG)"
-    ${Else}
-      strCpy $R7 "$(WARN_MIN_SUPPORTED_OSVER_MSG)"
-    ${EndIf}
-    MessageBox MB_OKCANCEL|MB_ICONSTOP "$R7" IDCANCEL +2
-    ExecShell "open" "${URLSystemRequirements}"
-    Quit
-  ${EndUnless}
-
   SetRegView 64
 !else
   StrCpy $R8 "0"
@@ -991,9 +973,7 @@ Function .onInit
   !insertmacro InitInstallOptionsFile "summary.ini"
 
   ClearErrors
-  ${If} ${AtLeastWinVista}
     WriteRegStr HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest" "Write Test"
-  ${EndIf}
   ${If} ${Errors}
     ; Setup the options.ini file for the Custom Options Page without the option
     ; to set as default for Vista and above since the installer is unable to
