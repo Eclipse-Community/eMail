@@ -6,11 +6,13 @@ MOZ_APP_NAME=eMail
 
 MOZ_APP_BASENAME="eMail"
 
+MOZ_APP_NEWSNAME="Eclipse Mail (News)"
+
 MOZ_APP_DISPLAYNAME=eMail
 
 MOZ_APP_VENDOR="Eclipse Community"
 
-
+MOZ_APP_FULLNAME="Eclipse Mail"
 
 MOZ_APP_PROFILE="Eclipse Community/eMail"
 

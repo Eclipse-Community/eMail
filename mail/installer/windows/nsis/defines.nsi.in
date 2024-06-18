@@ -5,7 +5,7 @@
 
 
 # These defines should match application.ini settings
-!define AppName               "Interlink"
+!define AppName               "@MOZ_APP_DISPLAYNAME@"
 !define AppVersion            "@MOZ_APP_VERSION@"
 
 !define GREVersion            @MOZILLA_VERSION@
@@ -14,10 +14,10 @@
 !define FileMainEXE           "@MOZ_APP_NAME@.exe"
 !define WindowClass           "InterlinkMessageWindow"
 
-!define AppRegNameMail        "Interlink"
-!define AppRegNameNews        "Interlink (News)"
+!define AppRegNameMail        "@MOZ_APP_NAME@"
+!define AppRegNameNews        "@MOZ_APP_NEWSNAME@"
 
-!define ClientsRegName        "Binary Outcast Interlink"
+!define ClientsRegName        "@MOZ_APP_FULLNAME@"
 
 !define BrandShortName        "@MOZ_APP_DISPLAYNAME@"
 !define PreReleaseSuffix      "@PRE_RELEASE_SUFFIX@"
@@ -56,7 +56,7 @@ VIProductVersion "1.0.0.0"
 VIAddVersionKey "ProductName"     "${BrandShortName}"
 VIAddVersionKey "CompanyName"     "${CompanyName}"
 #ifdef MOZ_OFFICIAL_BRANDING
-VIAddVersionKey "LegalTrademarks" "${BrandShortName} is a Trademark of Binary Outcast"
+VIAddVersionKey "LegalTrademarks" "${BrandShortName} is a Trademark of Eclipse Community."
 #endif
 VIAddVersionKey "LegalCopyright"  "${CompanyName}"
 VIAddVersionKey "FileVersion"     "${AppVersion}"
