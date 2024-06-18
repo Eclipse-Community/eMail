@@ -1,4 +1,4 @@
-mk_add_options MOZ_MAKE_FLAGS="-j11"
+mk_add_options MOZ_MAKE_FLAGS="-j16"
 
 ac_add_options --enable-release
 ac_add_options --enable-project=mail
@@ -17,8 +17,9 @@ ac_add_options --disable-updater
 ac_add_options --disable-tests
 #ac_add_options --disable-mochitests
 ac_add_options --disable-js-lto
-ac_add_options --enable-jxl
+#ac_add_options --enable-jxl
 export MOZ_SOURCE_CHANGESET=iloveneedingtobodgechangesetfornoreason
+export MOZ_OFFICIAL_BRANDING=1
 
 # Branding
 ac_add_options --with-app-name=eMail
@@ -26,8 +27,8 @@ ac_add_options --with-app-basename=eMail
 ac_add_options --with-distribution-id=com.eclipse.email
 
 ac_add_options --target=i686-pc-mingw32
-WIN32_REDIST_DIR=$VCINSTALLDIR/Redist/MSVC/14.16.27012/x86/Microsoft.VC141.CRT
+WIN32_REDIST_DIR=$VCINSTALLDIR/Redist/MSVC/14.13.26020/x86/Microsoft.VC141.CRT
 
 #ac_add_options --target=x86_64-pc-mingw32
 #ac_add_options --host=x86_64-pc-mingw32
-#WIN32_REDIST_DIR=$VCINSTALLDIR/Redist/MSVC/14.16.27012/x64/Microsoft.VC141.CRT
+#WIN32_REDIST_DIR=$VCINSTALLDIR/Redist/MSVC/14.13.26020/x64/Microsoft.VC141.CRT
