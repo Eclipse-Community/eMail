@@ -2,7 +2,7 @@ mk_add_options MOZ_MAKE_FLAGS="-j11"
 
 ac_add_options --enable-release
 ac_add_options --enable-project=mail
-ac_add_options --enable-optimize="-O2 -Ob2ity -GS- -GFAT -Qpar -Qfast_transcendentals -openmp"
+ac_add_options --enable-optimize="-arch:IA32 -O2 -Ob2ity -GS- -GFAT -Qpar -Qfast_transcendentals -openmp"
 ac_add_options --enable-jemalloc
 ac_add_options --enable-official-branding
 #ac_add_options --enable-shared-js
@@ -25,4 +25,9 @@ ac_add_options --with-app-name=eMail
 ac_add_options --with-app-basename=eMail
 ac_add_options --with-distribution-id=com.eclipse.email
 
+ac_add_options --target=i686-pc-mingw32
 WIN32_REDIST_DIR=$VCINSTALLDIR/Redist/MSVC/14.16.27012/x86/Microsoft.VC141.CRT
+
+#ac_add_options --target=x86_64-pc-mingw32
+#ac_add_options --host=x86_64-pc-mingw32
+#WIN32_REDIST_DIR=$VCINSTALLDIR/Redist/MSVC/14.16.27012/x64/Microsoft.VC141.CRT
