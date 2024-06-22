@@ -16,9 +16,9 @@ MOZ_APP_FULLNAME="Eclipse Mail"
 
 MOZ_APP_PROFILE="Eclipse Community/eMail"
 
-MOZ_APP_REMOTINGNAME=com.eclipse.email
+MOZ_APP_REMOTINGNAME=com.eclipse.mail
 
-MOZ_DISTRIBUTION_ID=com.eclipse.email
+MOZ_DISTRIBUTION_ID=com.eclipse.mail
 
 MOZ_MACBUNDLE_NAME="eMail.app"
 
