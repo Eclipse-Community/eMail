@@ -33,7 +33,7 @@ ac_add_options --disable-debug-js-modules
 ac_add_options --disable-tests
 #ac_add_options --disable-mochitests
 ac_add_options --disable-accessibility
-ac_add_options --enable-devtools
+#ac_add_options --enable-devtools
 ac_add_options --enable-phoenix-extensions
 ac_add_options --enable-shared-js
 ac_add_options --enable-strip
