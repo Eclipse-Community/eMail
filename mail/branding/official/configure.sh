@@ -10,6 +10,8 @@ MOZ_APP_NEWSNAME="Eclipse Mail (News)"
 
 MOZ_APP_DISPLAYNAME=eMail
 
+MOZ_APP_UA_NAME=Eclipse_Mail
+
 MOZ_APP_VENDOR="Eclipse Community"
 
 MOZ_APP_FULLNAME="Eclipse Mail"

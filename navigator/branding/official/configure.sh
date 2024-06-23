@@ -8,6 +8,8 @@ MOZ_APP_BASENAME="Lun3r Navigator"
 
 MOZ_APP_DISPLAYNAME="Lun3r Navigator"
 
+MOZ_APP_UA_NAME=Lun3r_Navigator
+
 MOZ_APP_VENDOR="Eclipse Community"
 
 MOZ_APP_FULLNAME="Lun3r Navigator"
