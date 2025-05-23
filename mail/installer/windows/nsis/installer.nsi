@@ -72,7 +72,7 @@ Var PageName
 !include common.nsh
 !include locales.nsi
 
-VIAddVersionKey "FileDescription"  "${BrandShortName} Installer"
+VIAddVersionKey "FileDescription"  "${BrandFullNameInternal} Installer"
 VIAddVersionKey "OriginalFilename" "setup.exe"
 
 ; Must be inserted before other macros that use logging
@@ -117,9 +117,9 @@ VIAddVersionKey "OriginalFilename" "setup.exe"
 Name "${BrandFullName}"
 OutFile "setup.exe"
 !ifdef HAVE_64BIT_BUILD
-  InstallDir "$PROGRAMFILES64\${BrandFullName}\"
+  InstallDir "$PROGRAMFILES64\${CompanyName}\${BrandShortName}\"
 !else
-  InstallDir "$PROGRAMFILES32\${BrandFullName}\"
+  InstallDir "$PROGRAMFILES32\${CompanyName}\${BrandShortName}\"
 !endif
 ShowInstDetails nevershow
 
@@ -217,7 +217,7 @@ Section "-InstallStartCleanup"
   ${EndIf}
 
   ; Remove the updates directory for Vista and above
-  ${CleanUpdatesDir} "Interlink"
+  ${CleanUpdateDirectories} "${CompanyName}\${BrandShortName}" "${CompanyName}\updates"
 
   ${GetParameters} $0
   ${GetOptions} "$0" "/INI=" $1
@@ -323,25 +323,25 @@ Section "-Application" APP_IDX
 
   ${LogHeader} "Adding Registry Entries"
   SetShellVarContext current  ; Set SHCTX to HKCU
-  ${RegCleanMain} "Software\Binary Outcast"
+  ${RegCleanMain} "Software\${CompanyName}\${BrandShortName}"
   ${RegCleanUninstall}
   ${UpdateProtocolHandlers}
 
   ClearErrors
-  WriteRegStr HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest" "Write Test"
+  WriteRegStr HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest" "Write Test"
   ${If} ${Errors}
     StrCpy $TmpVal "HKCU" ; used primarily for logging
   ${Else}
     SetShellVarContext all  ; Set SHCTX to HKLM
-    DeleteRegValue HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest"
+    DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest"
     StrCpy $TmpVal "HKLM" ; used primarily for logging
-    ${RegCleanMain} "Software\Binary Outcast"
+    ${RegCleanMain} "Software\${CompanyName}\${BrandShortName}"
     ${RegCleanUninstall}
     ${UpdateProtocolHandlers}
   ${EndIf}
 
   ; setup the application model id registration value
-  ${InitHashAppModelId} "$INSTDIR" "Software\Binary Outcast\${AppName}\TaskBarIDs"
+  ${InitHashAppModelId} "$INSTDIR" "Software\${CompanyName}\${BrandShortName}\TaskBarIDs"
 
   ${RemoveDeprecatedKeys}
 
@@ -973,14 +973,14 @@ Function .onInit
   !insertmacro InitInstallOptionsFile "summary.ini"
 
   ClearErrors
-    WriteRegStr HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest" "Write Test"
+    WriteRegStr HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest" "Write Test"
   ${If} ${Errors}
     ; Setup the options.ini file for the Custom Options Page without the option
     ; to set as default for Vista and above since the installer is unable to
     ; write to HKLM.
     WriteINIStr "$PLUGINSDIR\options.ini" "Settings" NumFields "5"
   ${Else}
-    DeleteRegValue HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest"
+    DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest"
     ; Setup the options.ini file for the Custom Options Page with the option
     ; to set as default
     WriteINIStr "$PLUGINSDIR\options.ini" "Settings" NumFields "6"

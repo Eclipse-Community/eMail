@@ -5,8 +5,6 @@
 #include <windows.h>
 #include "nsNativeAppSupportWin.h"
 
-1 24 "thunderbird.exe.manifest" 
-
 STRINGTABLE DISCARDABLE
 BEGIN
     IDS_STARTMENU_APPNAME,              "@MOZ_APP_DISPLAYNAME@"

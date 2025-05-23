@@ -73,7 +73,7 @@ Var PreventRebootRequired
 !include common.nsh
 !include locales.nsi
 
-VIAddVersionKey "FileDescription" "${BrandShortName} Installer"
+VIAddVersionKey "FileDescription" "${BrandFullNameInternal} Installer"
 VIAddVersionKey "OriginalFilename" "setup.exe"
 
 ; Must be inserted before other macros that use logging
@@ -122,9 +122,9 @@ VIAddVersionKey "OriginalFilename" "setup.exe"
 Name "${BrandFullName}"
 OutFile "setup.exe"
 !ifdef HAVE_64BIT_BUILD
-  InstallDir "$PROGRAMFILES64\${BrandFullName}\"
+  InstallDir "$PROGRAMFILES64\${CompanyName}\${BrandShortName}\"
 !else
-  InstallDir "$PROGRAMFILES32\${BrandFullName}\"
+  InstallDir "$PROGRAMFILES32\${CompanyName}\${BrandShortName}\"
 !endif
 ShowInstDetails nevershow
 
@@ -248,10 +248,10 @@ Section "-InstallStartCleanup"
   ${EndIf}
 
   ; setup the application model id registration value
-  ${InitHashAppModelId} "$INSTDIR" "Software\Binary Outcast\${AppName}\TaskBarIDs"
+  ${InitHashAppModelId} "$INSTDIR" "Software\${CompanyName}\${BrandShortName}\TaskBarIDs"
 
   ; Remove the updates directory for Vista and above
-  ${CleanUpdateDirectories} "Mozilla\Borealis" "Mozilla\updates"
+  ${CleanUpdateDirectories} "${CompanyName}\${BrandShortName}" "${CompanyName}\updates"
 
   ${RemoveDeprecatedFiles}
   ${RemovePrecompleteEntries} "false"
@@ -332,25 +332,25 @@ Section "-Application" APP_IDX
 
   ${LogHeader} "Adding Registry Entries"
   SetShellVarContext current  ; Set SHCTX to HKCU
-  ${RegCleanMain} "Software\Mozilla"
+  ${RegCleanMain} "Software\${CompanyName}\${BrandShortName}"
   ${RegCleanUninstall}
   ${UpdateProtocolHandlers}
 
   ClearErrors
-  WriteRegStr HKLM "Software\Mozilla" "${BrandShortName}InstallerTest" "Write Test"
+  WriteRegStr HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest" "Write Test"
   ${If} ${Errors}
     StrCpy $TmpVal "HKCU" ; used primarily for logging
   ${Else}
     SetShellVarContext all  ; Set SHCTX to HKLM
-    DeleteRegValue HKLM "Software\Mozilla" "${BrandShortName}InstallerTest"
+    DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest"
     StrCpy $TmpVal "HKLM" ; used primarily for logging
-    ${RegCleanMain} "Software\Mozilla"
+    ${RegCleanMain} "Software\${CompanyName}\${BrandShortName}"
     ${RegCleanUninstall}
     ${UpdateProtocolHandlers}
 
-    ReadRegStr $0 HKLM "Software\mozilla.org\Mozilla" "CurrentVersion"
+    ReadRegStr $0 HKLM "Software\${CompanyName}\${BrandShortName}" "CurrentVersion"
     ${If} "$0" != "${GREVersion}"
-      WriteRegStr HKLM "Software\mozilla.org\Mozilla" "CurrentVersion" "${GREVersion}"
+      WriteRegStr HKLM "Software\${CompanyName}\${BrandShortName}" "CurrentVersion" "${GREVersion}"
     ${EndIf}
   ${EndIf}
 
@@ -572,7 +572,7 @@ Section "-InstallEndCleanup"
       ; If we have something other than empty string now, write the value.
       ${If} "$0" != ""
         ClearErrors
-        WriteRegStr HKCU "Software\Binary Outcast\Borealis" "OldDefaultBrowserCommand" "$0"
+        WriteRegStr HKCU "Software\${CompanyName}\${BrandShortName}" "OldDefaultBrowserCommand" "$0"
       ${EndIf}
 
       ${LogHeader} "Setting as the default browser"
@@ -588,7 +588,7 @@ Section "-InstallEndCleanup"
     ${ElseIfNot} ${Errors}
       ${LogHeader} "Writing default-browser opt-out"
       ClearErrors
-      WriteRegStr HKCU "Software\Binary Outcast\Borealis" "DefaultBrowserOptOut" "True"
+      WriteRegStr HKCU "Software\${CompanyName}\${BrandShortName}" "DefaultBrowserOptOut" "True"
       ${If} ${Errors}
         ${LogMsg} "Error writing default-browser opt-out"
       ${EndIf}
@@ -954,9 +954,9 @@ Function preSummary
 
   ; Check if it is possible to write to HKLM
   ClearErrors
-  WriteRegStr HKLM "Software\Mozilla" "${BrandShortName}InstallerTest" "Write Test"
+  WriteRegStr HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest" "Write Test"
   ${Unless} ${Errors}
-    DeleteRegValue HKLM "Software\Mozilla" "${BrandShortName}InstallerTest"
+    DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest"
     ; Check if Borealis is the http handler for this user.
     SetShellVarContext current ; Set SHCTX to the current user
     ${IsHandlerForInstallDir} "http" $R9

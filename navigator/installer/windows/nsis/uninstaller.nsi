@@ -193,10 +193,10 @@ Section "Uninstall"
   ${EndIf}
 
   ; setup the application model id registration value
-  ${un.InitHashAppModelId} "$INSTDIR" "Software\Binary Outcast\${AppName}\TaskBarIDs"
+  ${un.InitHashAppModelId} "$INSTDIR" "Software\${CompanyName}\${BrandShortName}\TaskBarIDs"
 
   SetShellVarContext current  ; Set SHCTX to HKCU
-  ${un.RegCleanMain} "Software\Mozilla"
+  ${un.RegCleanMain} "Software\${CompanyName}\${BrandShortName}"
   ${un.RegCleanUninstall}
   ${un.DeleteShortcuts}
 
@@ -210,18 +210,18 @@ Section "Uninstall"
   ${un.CleanUpdateDirectories} "Mozilla\Borealis" "Mozilla\updates"
 
   ; Remove any app model id's stored in the registry for this install path
-  DeleteRegValue HKCU "Software\Binary Outcast\${AppName}\TaskBarIDs" "$INSTDIR"
-  DeleteRegValue HKLM "Software\Binary Outcast\${AppName}\TaskBarIDs" "$INSTDIR"
+  DeleteRegValue HKCU "Software\${CompanyName}\${BrandShortName}\TaskBarIDs" "$INSTDIR"
+  DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}\TaskBarIDs" "$INSTDIR"
 
   ClearErrors
-  WriteRegStr HKLM "Software\Mozilla" "${BrandShortName}InstallerTest" "Write Test"
+  WriteRegStr HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest" "Write Test"
   ${If} ${Errors}
     StrCpy $TmpVal "HKCU" ; used primarily for logging
   ${Else}
     SetShellVarContext all  ; Set SHCTX to HKLM
-    DeleteRegValue HKLM "Software\Mozilla" "${BrandShortName}InstallerTest"
+    DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest"
     StrCpy $TmpVal "HKLM" ; used primarily for logging
-    ${un.RegCleanMain} "Software\Mozilla"
+    ${un.RegCleanMain} "Software\${CompanyName}\${BrandShortName}"
     ${un.RegCleanUninstall}
     ${un.DeleteShortcuts}
     ${un.SetAppLSPCategories}
@@ -250,10 +250,10 @@ Section "Uninstall"
   ${EndIf}
 
   SetShellVarContext all  ; Set SHCTX to HKLM
-  ${un.GetSecondInstallPath} "Software\Mozilla" $R9
+  ${un.GetSecondInstallPath} "Software\${CompanyName}\${BrandShortName}" $R9
   ${If} $R9 == "false"
     SetShellVarContext current  ; Set SHCTX to HKCU
-    ${un.GetSecondInstallPath} "Software\Mozilla" $R9
+    ${un.GetSecondInstallPath} "Software\${CompanyName}\${BrandShortName}" $R9
   ${EndIf}
 
   StrCpy $0 "Software\Clients\StartMenuInternet\${FileMainEXE}\shell\open\command"
@@ -299,7 +299,7 @@ Section "Uninstall"
     StrCpy $0 "Software\Microsoft\MediaPlayer\ShimInclusionList\plugin-container.exe"
     DeleteRegKey HKLM "$0"
     DeleteRegKey HKCU "$0"
-    StrCpy $0 "Software\Classes\MIME\Database\Content Type\application/x-xpinstall;app=Borealis"
+    StrCpy $0 "Software\Classes\MIME\Database\Content Type\application/x-xpinstall;app=${FileMainEXE}"
     DeleteRegKey HKLM "$0"
     DeleteRegKey HKCU "$0"
   ${Else}
@@ -396,7 +396,7 @@ Section "Uninstall"
   ; subsequently deleted after checking. If the value is found during startup
   ; the browser will offer to Reset Borealis. We use the UpdateChannel to match
   ; uninstalls of Borealis-release with reinstalls of Borealis-release, for example.
-  WriteRegStr HKCU "Software\Binary Outcast\Borealis" "Uninstalled-${UpdateChannel}" "True"
+  WriteRegStr HKCU "Software\${CompanyName}\Borealis" "Uninstalled-${UpdateChannel}" "True"
 
   ${un.IsFirewallSvcRunning}
   Pop $0

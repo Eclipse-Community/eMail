@@ -58,7 +58,7 @@ GARBAGE += write-message.ico address-book.ico
 # (this dependency should really be just for thunderbird.exe, not other targets)
 # Note the manifest file exists in the tree, so we use the explicit filename
 # here.
-EXTRA_DEPS += thunderbird.exe.manifest
+EXTRA_DEPS += $(PROGRAM).manifest
 endif
 
 include $(topsrcdir)/config/rules.mk

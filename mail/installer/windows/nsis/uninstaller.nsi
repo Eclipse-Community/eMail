@@ -203,22 +203,22 @@ Section "Uninstall"
   ${EndIf}
 
   ; setup the application model id registration value
-  ${un.InitHashAppModelId} "$INSTDIR" "Software\Binary Outcast\${AppName}\TaskBarIDs"
+  ${un.InitHashAppModelId} "$INSTDIR" "Software\${CompanyName}\${BrandShortName}\TaskBarIDs"
 
   SetShellVarContext current  ; Set SHCTX to HKCU
-  ${un.RegCleanMain} "Software\Binary Outcast"
+  ${un.RegCleanMain} "Software\${CompanyName}\${BrandShortName}"
   ${un.RegCleanUninstall}
   ${un.DeleteShortcuts}
 
   ClearErrors
-  WriteRegStr HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest" "Write Test"
+  WriteRegStr HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest" "Write Test"
   ${If} ${Errors}
     StrCpy $TmpVal "HKCU" ; used primarily for logging
   ${Else}
     SetShellVarContext all  ; Set SHCTX to HKLM
-    DeleteRegValue HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest"
+    DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}" "${BrandShortName}InstallerTest"
     StrCpy $TmpVal "HKLM" ; used primarily for logging
-    ${un.RegCleanMain} "Software\Binary Outcast"
+    ${un.RegCleanMain} "Software\${CompanyName}\${BrandShortName}"
     ${un.RegCleanUninstall}
     ${un.DeleteShortcuts}
   ${EndIf}
@@ -238,8 +238,8 @@ Section "Uninstall"
   ${EndIf}
 
   ; Remove any app model id's stored in the registry for this install path
-  DeleteRegValue HKCU "Software\Binary Outcast\${AppName}\TaskBarIDs" "$INSTDIR"
-  DeleteRegValue HKLM "Software\Binary Outcast\${AppName}\TaskBarIDs" "$INSTDIR"
+  DeleteRegValue HKCU "Software\${CompanyName}\${BrandShortName}\TaskBarIDs" "$INSTDIR"
+  DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}\TaskBarIDs" "$INSTDIR"
 
   ClearErrors
   ReadRegStr $R9 HKCR "InterlinkEML" ""
@@ -255,10 +255,10 @@ Section "Uninstall"
   ${EndIf}
 
   SetShellVarContext all  ; Set SHCTX to HKLM
-  ${un.GetSecondInstallPath} "Software\Binary Outcast" $R9
+  ${un.GetSecondInstallPath} "Software\${CompanyName}\${BrandShortName}" $R9
   ${If} $R9 == "false"
     SetShellVarContext current  ; Set SHCTX to HKCU
-    ${un.GetSecondInstallPath} "Software\Binary Outcast" $R9
+    ${un.GetSecondInstallPath} "Software\${CompanyName}\${BrandShortName}" $R9
   ${EndIf}
 
   StrCpy $0 "Software\Clients\Mail\${ClientsRegName}\shell\open\command"
@@ -321,7 +321,7 @@ Section "Uninstall"
   ${EndIf}
 
   ; Remove the updates directory for Vista and above
-  ${un.CleanUpdatesDir} "Interlink"
+  ${un.CleanUpdatesDir} "${BrandShortName}"
 
   ; Remove files that may be left behind by the application in the
   ; VirtualStore directory.
@@ -511,7 +511,7 @@ Function .onInit
 
   ; We need this set up for most of the helper.exe operations.
   !ifdef AppName
-  ${InitHashAppModelId} "$INSTDIR" "Software\Binary Outcast\${AppName}\TaskBarIDs"
+  ${InitHashAppModelId} "$INSTDIR" "Software\${CompanyName}\${BrandShortName}\TaskBarIDs"
   !endif
   ${UninstallOnInitCommon}
 FunctionEnd

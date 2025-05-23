@@ -10,9 +10,9 @@
 !define AB_CD                 "@AB_CD@"
 
 !define FileMainEXE           "@MOZ_APP_NAME@.exe"
-!define WindowClass           "BorealisMessageWindow"
-!define DDEApplication        "Borealis"
-!define AppRegName            "Borealis"
+!define WindowClass           "@MOZ_APP_DISPLAYNAME@MessageWindow"
+!define DDEApplication        "@MOZ_APP_DISPLAYNAME@"
+!define AppRegName            "${CompanyName}\${BrandShortName}"
 
 !ifndef DEV_EDITION
 !define BrandShortName        "@MOZ_APP_DISPLAYNAME@"

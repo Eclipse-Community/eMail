@@ -54,6 +54,7 @@ var ShellServiceInternal = {
       return false;
     }
 
+// fix this
 #ifdef XP_WIN
     let optOutValue = WindowsRegistry.readRegKey(Components.interfaces.nsIWindowsRegKey.ROOT_KEY_CURRENT_USER,
                                                  "Software\\Binary Outcast\\Borealis",

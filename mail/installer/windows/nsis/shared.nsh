@@ -9,14 +9,14 @@
   ; install location in the Software\Binary Outcast key and uninstall registry entries
   ; that point to our install location for both HKCU and HKLM.
   SetShellVarContext current  ; Set SHCTX to the current user (e.g. HKCU)
-  ${RegCleanMain} "Software\Binary Outcast"
+  ${RegCleanMain} "Software\${CompanyName}"
   ${RegCleanUninstall}
   ${UpdateProtocolHandlers}
   ; Win7 taskbar and start menu link maintenance
   Call FixShortcutAppModelIDs
 
   ; setup the application model id registration value
-  ${InitHashAppModelId} "$INSTDIR" "Software\Binary Outcast\${AppName}\TaskBarIDs"
+  ${InitHashAppModelId} "$INSTDIR" "Software\${CompanyName}\${BrandShortName}\TaskBarIDs"
 
   ; Upgrade the copies of the MAPI DLL's
   ${UpgradeMapiDLLs}
@@ -31,14 +31,14 @@
   ${EndIf}
 
   ClearErrors
-  WriteRegStr HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest" "Write Test"
+  WriteRegStr HKLM "Software\${CompanyName}" "${BrandShortName}InstallerTest" "Write Test"
   ${If} ${Errors}
     StrCpy $TmpVal "HKCU" ; used primarily for logging
   ${Else}
-    DeleteRegValue HKLM "Software\Binary Outcast" "${BrandShortName}InstallerTest"
+    DeleteRegValue HKLM "Software\${CompanyName}" "${BrandShortName}InstallerTest"
     SetShellVarContext all    ; Set SHCTX to all users (e.g. HKLM)
     StrCpy $TmpVal "HKLM" ; used primarily for logging
-    ${RegCleanMain} "Software\Binary Outcast"
+    ${RegCleanMain} "Software\${CompanyName}"
     ${RegCleanUninstall}
     ${UpdateProtocolHandlers}
 
@@ -392,27 +392,27 @@
 
 !macro SetAppKeys
   ${GetLongPath} "$INSTDIR" $8
-  StrCpy $0 "Software\Binary Outcast\${BrandFullNameInternal}\${AppVersion} (${AB_CD})\Main"
+  StrCpy $0 "Software\${CompanyName}\${BrandShortName}\${AppVersion} (${AB_CD})\Main"
   ${WriteRegStr2} $TmpVal "$0" "Install Directory" "$8" 0
   ${WriteRegStr2} $TmpVal "$0" "PathToExe" "$8\${FileMainEXE}" 0
 
-  StrCpy $0 "Software\Binary Outcast\${BrandFullNameInternal}\${AppVersion} (${AB_CD})\Uninstall"
+  StrCpy $0 "Software\${CompanyName}\${BrandShortName}\${AppVersion} (${AB_CD})\Uninstall"
   ${WriteRegStr2} $TmpVal "$0" "Description" "${BrandFullNameInternal} ${AppVersion} (${ARCH} ${AB_CD})" 0
 
-  StrCpy $0 "Software\Binary Outcast\${BrandFullNameInternal}\${AppVersion} (${AB_CD})"
+  StrCpy $0 "Software\${CompanyName}\${BrandShortName}\${AppVersion} (${AB_CD})"
   ${WriteRegStr2} $TmpVal  "$0" "" "${AppVersion} (${AB_CD})" 0
 
-  StrCpy $0 "Software\Binary Outcast\${BrandFullNameInternal} ${AppVersion}\bin"
+  StrCpy $0 "Software\${CompanyName}\${BrandShortName} ${AppVersion}\bin"
   ${WriteRegStr2} $TmpVal "$0" "PathToExe" "$8\${FileMainEXE}" 0
 
-  StrCpy $0 "Software\Binary Outcast\${BrandFullNameInternal} ${AppVersion}\extensions"
+  StrCpy $0 "Software\${CompanyName}\${BrandShortName} ${AppVersion}\extensions"
   ${WriteRegStr2} $TmpVal "$0" "Components" "$8\components" 0
   ${WriteRegStr2} $TmpVal "$0" "Plugins" "$8\plugins" 0
 
-  StrCpy $0 "Software\Binary Outcast\${BrandFullNameInternal} ${AppVersion}"
+  StrCpy $0 "Software\${CompanyName}\${BrandShortName} ${AppVersion}"
   ${WriteRegStr2} $TmpVal "$0" "GeckoVer" "${GREVersion}" 0
 
-  StrCpy $0 "Software\Binary Outcast\${BrandFullNameInternal}"
+  StrCpy $0 "Software\${CompanyName}\${BrandShortName}"
   ${WriteRegStr2} $TmpVal "$0" "" "${GREVersion}" 0
   ${WriteRegStr2} $TmpVal "$0" "CurrentVersion" "${AppVersion} (${AB_CD})" 0
 !macroend
@@ -454,7 +454,7 @@
     ${WriteRegStr2} $1 "$0" "DisplayName" "${BrandFullNameInternal} ${AppVersion} (${ARCH} ${AB_CD})" 0
     ${WriteRegStr2} $1 "$0" "DisplayVersion" "${AppVersion}" 0
     ${WriteRegStr2} $1 "$0" "InstallLocation" "$8" 0
-    ${WriteRegStr2} $1 "$0" "Publisher" "Binary Outcast" 0
+    ${WriteRegStr2} $1 "$0" "Publisher" "${CompanyName}" 0
     ${WriteRegStr2} $1 "$0" "UninstallString" "$8\uninstall\helper.exe" 0
     ${WriteRegStr2} $1 "$0" "URLInfoAbout" "${URLInfoAbout}" 0
     ${WriteRegStr2} $1 "$0" "URLUpdateInfo" "${URLUpdateInfo}" 0
@@ -577,8 +577,8 @@
   ; The Vista shim for 1.5.0.10 writes out a set of bogus keys which we need to
   ; cleanup. Intentionally hard coding Binary Outcast Interlink here
   ; as this is the string used by the vista shim.
-  DeleteRegKey HKLM "$0\Binary Outcast Interlink.Url.mailto"
-  DeleteRegValue HKLM "Software\RegisteredApplications" "Binary Outcast Interlink"
+  DeleteRegKey HKLM "$0\${CompanyName} ${BrandShortName}.Url.mailto"
+  DeleteRegValue HKLM "Software\RegisteredApplications" "${CompanyName} ${BrandShortName}"
 
   ; Remove the app compatibility registry key
   StrCpy $0 "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
