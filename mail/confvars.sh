@@ -56,3 +56,9 @@ fi
 ACCEPTED_MAR_CHANNEL_IDS=release,unstable
 # The MAR_CHANNEL_ID must not contain the following 3 characters: ",\t "
 MAR_CHANNEL_ID=release
+
+# Set the chrome packing format
+# Possible values are omni, jar, and flat
+# Currently, only omni and flat are supported
+MOZ_CHROME_FILE_FORMAT=omni
+JAR_COMPRESSION=brotli

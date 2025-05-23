@@ -46,3 +46,9 @@ if test "$OS_ARCH" = "WINNT" -o \
         "$OS_ARCH" = "Linux"; then
   MOZ_BUNDLED_FONTS=1
 fi
+
+# Set the chrome packing format
+# Possible values are omni, jar, and flat
+# Currently, only omni and flat are supported
+MOZ_CHROME_FILE_FORMAT=omni
+JAR_COMPRESSION=brotli
