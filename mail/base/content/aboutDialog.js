@@ -39,34 +39,6 @@ function init(aEvent)
     // Pref is unset
   }
 
-  // XXX FIXME
-  // Include the build ID and display warning if this is an "a#" (nightly or aurora) build
-  let versionField = document.getElementById("version");
-  let version = Services.appinfo.version;
-  if (/a\d+$/.test(version)) {
-    let buildID = Services.appinfo.appBuildID;
-    let year = buildID.slice(0, 4);
-    let month = buildID.slice(4, 6);
-    let day = buildID.slice(6, 8);
-    versionField.textContent += ` (${year}-${month}-${day})`;
-
-    document.getElementById("communityDesc").hidden = true;
-  }
-
-  // Append "(32-bit)" or "(64-bit)" build architecture to the version number:
-  let bundle = Services.strings.createBundle("chrome://messenger/locale/messenger.properties");
-  let archResource = Services.appinfo.is64Bit
-                     ? "aboutDialog.architecture.sixtyFourBit"
-                     : "aboutDialog.architecture.thirtyTwoBit";
-  let arch = bundle.GetStringFromName(archResource);
-#ifdef XP_LINUX
-#expand let toolkit = "__MOZ_WIDGET_TOOLKIT__";
-  toolkit = toolkit.toUpperCase()
-  versionField.textContent += ` (${arch} - ${toolkit})`;
-#else
-  versionField.textContent += ` (${arch})`;
-#endif
-
 #ifdef MOZ_UPDATER
   let defaults = Services.prefs.getDefaultBranch("");
   let channelLabel = document.getElementById("currentChannel");

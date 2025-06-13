@@ -42,7 +42,7 @@
       <vbox id="leftBox" flex="1"/>
       <vbox id="rightBox" flex="1">
         <hbox align="baseline">
-#expand <label id="version" tooltiptext="Add-on Compatibility Version: __MOZ_APP_VERSION__">Version: __MOZ_APP_VERSION_DISPLAY__</label>
+#expand <label id="version" tooltiptext="Add-on Compatibility Version: __MOZ_APP_VERSION__">Version: __MOZ_APP_VERSION_DISPLAY__ (IA-32 i686)</label>
         </hbox>
 
         <label id="distribution" class="text-blurb"/>
