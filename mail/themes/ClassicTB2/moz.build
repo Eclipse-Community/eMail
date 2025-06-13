@@ -5,7 +5,7 @@
 
 FINAL_TARGET_PP_FILES += ['install.rdf']
 
-DIST_SUBDIR = 'extensions/xplatform@interlink.projects.binaryoutcast.com'
+DIST_SUBDIR = 'extensions/xplatform@themes.mozilla.org'
 
 FINAL_TARGET_FILES += [
     'icon.png',

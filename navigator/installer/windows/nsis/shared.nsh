@@ -13,9 +13,9 @@
   ; start menu tile.  In case there are 2 Borealis installations, we only do
   ; this if the application being updated is the default.
   ReadRegStr $0 HKCU "Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice" "ProgId"
-  ${If} $0 == "BorealisURL"
+  ${If} $0 == "BNavigatorURL"
   ${AndIf} $9 != 0 ; We're not running in session 0
-    ReadRegStr $0 HKCU "Software\Classes\BorealisURL\shell\open\command" ""
+    ReadRegStr $0 HKCU "Software\Classes\BNavigatorURL\shell\open\command" ""
     ${GetPathFromString} "$0" $0
     ${GetParent} "$0" $0
     ${If} ${FileExists} "$0"
@@ -282,9 +282,9 @@
   ClearErrors
   EnumRegKey $7 HKCR "${FILE_TYPE}" 0
   ${If} ${Errors}
-    WriteRegStr SHCTX "SOFTWARE\Classes\${FILE_TYPE}"  "" "BorealisHTML"
+    WriteRegStr SHCTX "SOFTWARE\Classes\${FILE_TYPE}"  "" "BNavigatorHTML"
   ${EndIf}
-  WriteRegStr SHCTX "SOFTWARE\Classes\${FILE_TYPE}\OpenWithProgids" "BorealisHTML" ""
+  WriteRegStr SHCTX "SOFTWARE\Classes\${FILE_TYPE}\OpenWithProgids" "BNavigatorHTML" ""
 !macroend
 !define AddAssociationIfNoneExist "!insertmacro AddAssociationIfNoneExist"
 
@@ -298,28 +298,28 @@
 
   ; Associate the file handlers with BorealisHTML
   ReadRegStr $6 SHCTX "$0\.htm" ""
-  ${If} "$6" != "BorealisHTML"
-    WriteRegStr SHCTX "$0\.htm"   "" "BorealisHTML"
+  ${If} "$6" != "BNavigatorHTML"
+    WriteRegStr SHCTX "$0\.htm"   "" "BNavigatorHTML"
   ${EndIf}
 
   ReadRegStr $6 SHCTX "$0\.html" ""
-  ${If} "$6" != "BorealisHTML"
-    WriteRegStr SHCTX "$0\.html"  "" "BorealisHTML"
+  ${If} "$6" != "BNavigatorHTML"
+    WriteRegStr SHCTX "$0\.html"  "" "BNavigatorHTML"
   ${EndIf}
 
   ReadRegStr $6 SHCTX "$0\.shtml" ""
-  ${If} "$6" != "BorealisHTML"
-    WriteRegStr SHCTX "$0\.shtml" "" "BorealisHTML"
+  ${If} "$6" != "BNavigatorHTML"
+    WriteRegStr SHCTX "$0\.shtml" "" "BNavigatorHTML"
   ${EndIf}
 
   ReadRegStr $6 SHCTX "$0\.xht" ""
-  ${If} "$6" != "BorealisHTML"
-    WriteRegStr SHCTX "$0\.xht"   "" "BorealisHTML"
+  ${If} "$6" != "BNavigatorHTML"
+    WriteRegStr SHCTX "$0\.xht"   "" "BNavigatorHTML"
   ${EndIf}
 
   ReadRegStr $6 SHCTX "$0\.xhtml" ""
-  ${If} "$6" != "BorealisHTML"
-    WriteRegStr SHCTX "$0\.xhtml" "" "BorealisHTML"
+  ${If} "$6" != "BNavigatorHTML"
+    WriteRegStr SHCTX "$0\.xhtml" "" "BNavigatorHTML"
   ${EndIf}
 
   ${AddAssociationIfNoneExist} ".oga"
@@ -329,10 +329,10 @@
 
   ; An empty string is used for the 5th param because BorealisHTML is not a
   ; protocol handler
-  ${AddDisabledDDEHandlerValues} "BorealisHTML" "$2" "$8,1" \
+  ${AddDisabledDDEHandlerValues} "BNavigatorHTML" "$2" "$8,1" \
                                  "${AppRegName} HTML Document" ""
 
-  ${AddDisabledDDEHandlerValues} "BorealisURL" "$2" "$8,1" "${AppRegName} URL" \
+  ${AddDisabledDDEHandlerValues} "BNavigatorURL" "$2" "$8,1" "${AppRegName} URL" \
                                  "true"
   ; An empty string is used for the 4th & 5th params because the following
   ; protocol handlers already have a display name and the additional keys
@@ -402,17 +402,17 @@
   WriteRegStr ${RegKey} "$0\Capabilities" "ApplicationIcon" "$8,0"
   WriteRegStr ${RegKey} "$0\Capabilities" "ApplicationName" "${BrandShortName}"
 
-  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".htm"   "BorealisHTML"
-  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".html"  "BorealisHTML"
-  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".shtml" "BorealisHTML"
-  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".xht"   "BorealisHTML"
-  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".xhtml" "BorealisHTML"
+  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".htm"   "BNavigatorHTML"
+  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".html"  "BNavigatorHTML"
+  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".shtml" "BNavigatorHTML"
+  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".xht"   "BNavigatorHTML"
+  WriteRegStr ${RegKey} "$0\Capabilities\FileAssociations" ".xhtml" "BNavigatorHTML"
 
   WriteRegStr ${RegKey} "$0\Capabilities\StartMenu" "StartMenuInternet" "$R9"
 
-  WriteRegStr ${RegKey} "$0\Capabilities\URLAssociations" "ftp"    "BorealisURL"
-  WriteRegStr ${RegKey} "$0\Capabilities\URLAssociations" "http"   "BorealisURL"
-  WriteRegStr ${RegKey} "$0\Capabilities\URLAssociations" "https"  "BorealisURL"
+  WriteRegStr ${RegKey} "$0\Capabilities\URLAssociations" "ftp"    "BNavigatorURL"
+  WriteRegStr ${RegKey} "$0\Capabilities\URLAssociations" "http"   "BNavigatorURL"
+  WriteRegStr ${RegKey} "$0\Capabilities\URLAssociations" "https"  "BNavigatorURL"
 
   ; Vista Registered Application
   WriteRegStr ${RegKey} "Software\RegisteredApplications" "${AppRegName}" "$0\Capabilities"
@@ -425,12 +425,12 @@
 ; icon being displayed for files associated with Borealis (does not use SHCTX).
 !macro FixShellIconHandler RegKey
   ClearErrors
-  ReadRegStr $1 ${RegKey} "Software\Classes\BorealisHTML\ShellEx\IconHandler" ""
+  ReadRegStr $1 ${RegKey} "Software\Classes\BNavigatorHTML\ShellEx\IconHandler" ""
   ${Unless} ${Errors}
-    ReadRegStr $1 ${RegKey} "Software\Classes\BorealisHTML\DefaultIcon" ""
+    ReadRegStr $1 ${RegKey} "Software\Classes\BNavigatorHTML\DefaultIcon" ""
     ${GetLongPath} "$INSTDIR\${FileMainEXE}" $2
     ${If} "$1" != "$2,1"
-      WriteRegStr ${RegKey} "Software\Classes\BorealisHTML\DefaultIcon" "" "$2,1"
+      WriteRegStr ${RegKey} "Software\Classes\BNavigatorHTML\DefaultIcon" "" "$2,1"
     ${EndIf}
   ${EndUnless}
 !macroend
@@ -576,13 +576,13 @@
   ${If} "$2" != ""
     ; Since there is a persistent handler remove BorealisHTML as the default
     ; value from both HKCU and HKLM if it set to BorealisHTML.
-    ${If} "$0" == "BorealisHTML"
+    ${If} "$0" == "BNavigatorHTML"
       DeleteRegValue HKCU "Software\Classes\${FILE_TYPE}" ""
     ${EndIf}
-    ${If} "$1" == "BorealisHTML"
+    ${If} "$1" == "BNavigatorHTML"
       DeleteRegValue HKLM "Software\Classes\${FILE_TYPE}" ""
     ${EndIf}
-  ${ElseIf} "$0" == "BorealisHTML"
+  ${ElseIf} "$0" == "BNavigatorHTML"
     ; Since KHCU is set to BorealisHTML remove BorealisHTML as the default value
     ; from HKCU if HKLM is set to a value other than an empty string.
     ${If} "$1" != ""
@@ -637,17 +637,17 @@
   ; Only set the file and protocol handlers if the existing one under HKCR is
   ; for this install location.
 
-  ${IsHandlerForInstallDir} "BorealisHTML" $R9
+  ${IsHandlerForInstallDir} "BNavigatorHTML" $R9
   ${If} "$R9" == "true"
     ; An empty string is used for the 5th param because BorealisHTML is not a
     ; protocol handler.
-    ${AddDisabledDDEHandlerValues} "BorealisHTML" "$2" "$8,1" \
+    ${AddDisabledDDEHandlerValues} "BNavigatorHTML" "$2" "$8,1" \
                                    "${AppRegName} HTML Document" ""
   ${EndIf}
 
-  ${IsHandlerForInstallDir} "BorealisURL" $R9
+  ${IsHandlerForInstallDir} "BNavigatorURL" $R9
   ${If} "$R9" == "true"
-    ${AddDisabledDDEHandlerValues} "BorealisURL" "$2" "$8,1" \
+    ${AddDisabledDDEHandlerValues} "BNavigatorURL" "$2" "$8,1" \
                                    "${AppRegName} URL" "true"
   ${EndIf}
 
@@ -683,8 +683,8 @@
   ${RegCleanAppHandler} "chrome"
 
   ; Remove protocol handler registry keys added by the MS shim
-  DeleteRegKey HKLM "Software\Classes\Borealis.URL"
-  DeleteRegKey HKCU "Software\Classes\Borealis.URL"
+  DeleteRegKey HKLM "Software\Classes\BNavigator.URL"
+  DeleteRegKey HKCU "Software\Classes\BNavigator.URL"
 
   ; Delete gopher from Capabilities\URLAssociations if it is present.
   ${StrFilter} "${FileMainEXE}" "+" "" "" $R9
@@ -698,7 +698,7 @@
   ; Delete gopher from the user's UrlAssociations if it points to BorealisURL.
   StrCpy $0 "Software\Microsoft\Windows\Shell\Associations\UrlAssociations\gopher"
   ReadRegStr $2 HKCU "$0\UserChoice" "Progid"
-  ${If} "$2" == "BorealisURL"
+  ${If} "$2" == "BNavigatorURL"
     DeleteRegKey HKCU "$0"
   ${EndIf}
 !macroend

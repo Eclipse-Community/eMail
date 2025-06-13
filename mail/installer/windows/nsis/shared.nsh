@@ -205,15 +205,15 @@
 
   ; An empty string is used for the 5th param because InterlinkEML is not a
   ; protocol handler
-  ${AddHandlerValues} "$0\InterlinkEML"  "$1" "$8,0" \
+  ${AddHandlerValues} "$0\MailNewsEML"  "$1" "$8,0" \
                       "${AppRegNameMail} Document" "" ""
-  ${AddHandlerValues} "$0\Interlink.Url.mailto"  "$2" "$8,0" "${AppRegNameMail} URL" "delete" ""
+  ${AddHandlerValues} "$0\MailNews.Url.mailto"  "$2" "$8,0" "${AppRegNameMail} URL" "delete" ""
   ${AddHandlerValues} "$0\mailto" "$2" "$8,0" "${AppRegNameMail} URL" "true" ""
 
   ; Associate the file handlers with InterlinkEML
   ReadRegStr $6 SHCTX ".eml" ""
-  ${If} "$6" != "InterlinkEML"
-    WriteRegStr SHCTX "$0\.eml"   "" "InterlinkEML"
+  ${If} "$6" != "MailNewsEML"
+    WriteRegStr SHCTX "$0\.eml"   "" "MailNewsEML"
   ${EndIf}
 !macroend
 !define SetHandlersMail "!insertmacro SetHandlersMail"
@@ -223,7 +223,7 @@
   StrCpy $0 "SOFTWARE\Classes"
   StrCpy $1 "$\"$8$\" -osint -mail $\"%1$\""
 
-  ${AddHandlerValues} "$0\Interlink.Url.news" "$1" "$8,0" \
+  ${AddHandlerValues} "$0\MailNews.Url.news" "$1" "$8,0" \
                       "${AppRegNameNews} URL" "delete" ""
   ${AddHandlerValues} "$0\news"   "$1" "$8,0" "${AppRegNameNews} URL" "true" ""
   ${AddHandlerValues} "$0\nntp"   "$1" "$8,0" "${AppRegNameNews} URL" "true" ""
@@ -313,10 +313,10 @@
   WriteRegStr HKLM "$0\Capabilities" "ApplicationDescription" "$(REG_APP_DESC)"
   WriteRegStr HKLM "$0\Capabilities" "ApplicationIcon" "$8,0"
   WriteRegStr HKLM "$0\Capabilities" "ApplicationName" "${AppRegNameMail}"
-  WriteRegStr HKLM "$0\Capabilities\FileAssociations" ".eml"   "InterlinkEML"
-  WriteRegStr HKLM "$0\Capabilities\FileAssociations" ".wdseml" "InterlinkEML"
+  WriteRegStr HKLM "$0\Capabilities\FileAssociations" ".eml"   "MailNewsEML"
+  WriteRegStr HKLM "$0\Capabilities\FileAssociations" ".wdseml" "MailNewsEML"
   WriteRegStr HKLM "$0\Capabilities\StartMenu" "Mail" "${ClientsRegName}"
-  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "mailto" "Interlink.Url.mailto"
+  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "mailto" "MailNews.Url.mailto"
 
   ; Vista Registered Application
   WriteRegStr HKLM "Software\RegisteredApplications" "${AppRegNameMail}" "$0\Capabilities"
@@ -375,9 +375,9 @@
   WriteRegStr HKLM "$0\Capabilities" "ApplicationDescription" "$(REG_APP_DESC)"
   WriteRegStr HKLM "$0\Capabilities" "ApplicationIcon" "$8,0"
   WriteRegStr HKLM "$0\Capabilities" "ApplicationName" "${AppRegNameNews}"
-  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "nntp" "Interlink.Url.news"
-  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "news" "Interlink.Url.news"
-  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "snews" "Interlink.Url.news"
+  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "nntp" "MailNews.Url.news"
+  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "news" "MailNews.Url.news"
+  WriteRegStr HKLM "$0\Capabilities\URLAssociations" "snews" "MailNews.Url.news"
 
   ; Protocols
   StrCpy $1 "$\"$8$\" -osint -mail $\"%1$\""
@@ -485,15 +485,15 @@
 
   ; Only set the file and protocol handlers if the existing one under HKCR is
   ; for this install location.
-  ${IsHandlerForInstallDir} "InterlinkEML" $R9
+  ${IsHandlerForInstallDir} "MailNewsEML" $R9
   ${If} "$R9" == "true"
-    ${AddHandlerValues} "SOFTWARE\Classes\InterlinkEML" "$3" "$8,0" \
+    ${AddHandlerValues} "SOFTWARE\Classes\MailNewsEML" "$3" "$8,0" \
                         "${AppRegNameMail} Document" "" ""
   ${EndIf}
 
-  ${IsHandlerForInstallDir} "Interlink.Url.mailto" $R9
+  ${IsHandlerForInstallDir} "MailNews.Url.mailto" $R9
   ${If} "$R9" == "true"
-    ${AddHandlerValues} "SOFTWARE\Classes\Interlink.Url.mailto" "$1" "$8,0" \
+    ${AddHandlerValues} "SOFTWARE\Classes\MailNews.Url.mailto" "$1" "$8,0" \
                         "${AppRegNameMail} URL" "delete" ""
   ${EndIf}
 
@@ -502,9 +502,9 @@
     ${AddHandlerValues} "SOFTWARE\Classes\mailto" "$1" "$8,0" "" "" ""
   ${EndIf}
 
-  ${IsHandlerForInstallDir} "Interlink.Url.news" $R9
+  ${IsHandlerForInstallDir} "MailNews.Url.news" $R9
   ${If} "$R9" == "true"
-    ${AddHandlerValues} "SOFTWARE\Classes\Interlink.Url.news" "$2" "$8,0" \
+    ${AddHandlerValues} "SOFTWARE\Classes\MailNews.Url.news" "$2" "$8,0" \
                         "${AppRegNameNews} URL" "delete" ""
   ${EndIf}
 

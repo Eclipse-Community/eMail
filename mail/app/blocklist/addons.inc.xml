@@ -1,17 +1,17 @@
   <emItems>
-    <!-- Interlink Entries -->  
-    <emItem blockID="interlink-0001"
+    <!-- MailNews Entries -->  
+    <emItem blockID="mailnews-0001"
             id="/^langpack-(.*)\.org$/">
       <prefs/>
       <versionRange minVersion="0" maxVersion="*" severity="3"/>
     </emItem>
-    <emItem blockID="interlink-0002"
-            id="scratchpad@projects.binaryoutcast.com">
+    <emItem blockID="mailnews-0002"
+            id="scratchpad@projects.mozilla.com">
       <prefs/>
       <versionRange minVersion="0" maxVersion="*" severity="3"/>
     </emItem>
-    <emItem blockID="interlink-0003"
-            id="profileswitcher@projects.binaryoutcast.com">
+    <emItem blockID="mailnews-0003"
+            id="profileswitcher@projects.mozilla.com">
       <prefs/>
       <versionRange minVersion="0" maxVersion="*" severity="3"/>
     </emItem>

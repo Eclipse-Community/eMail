@@ -154,7 +154,7 @@ typedef struct {
   const char* oldValueData;
 } SETTING;
 
-#define APP_REG_NAME L"Borealis"
+#define APP_REG_NAME L"BNavigator"
 #define VAL_FILE_ICON "%APPPATH%,1"
 #define VAL_OPEN "\"%APPPATH%\" -osint -url \"%1\""
 #define OLD_VAL_OPEN "\"%APPPATH%\" -requestPending -osint -url \"%1\""
@@ -180,10 +180,10 @@ static SETTING gSettings[] = {
   // File Handler Class
   // ***keep this as the first entry because when aForAllTypes is not set below
   // it will skip over this check.***
-  { MAKE_KEY_NAME1("BorealisHTML", SOC), VAL_OPEN, OLD_VAL_OPEN },
+  { MAKE_KEY_NAME1("BNavigatorHTML", SOC), VAL_OPEN, OLD_VAL_OPEN },
 
   // Protocol Handler Class - for Vista and above
-  { MAKE_KEY_NAME1("BorealisURL", SOC), VAL_OPEN, OLD_VAL_OPEN },
+  { MAKE_KEY_NAME1("BNavigatorURL", SOC), VAL_OPEN, OLD_VAL_OPEN },
 
   // Protocol Handlers
   { MAKE_KEY_NAME1("HTTP", DI), VAL_FILE_ICON },
@@ -197,10 +197,10 @@ static SETTING gSettings[] = {
 // are incorrect they are fixed without notifying the user.
 static SETTING gDDESettings[] = {
   // File Handler Class
-  { MAKE_KEY_NAME1("Software\\Classes\\BorealisHTML", SOD) },
+  { MAKE_KEY_NAME1("Software\\Classes\\BNavigatorHTML", SOD) },
 
   // Protocol Handler Class - for Vista and above
-  { MAKE_KEY_NAME1("Software\\Classes\\BorealisURL", SOD) },
+  { MAKE_KEY_NAME1("Software\\Classes\\BNavigatorURL", SOD) },
 
   // Protocol Handlers
   { MAKE_KEY_NAME1("Software\\Classes\\FTP", SOD) },
@@ -337,7 +337,7 @@ IsAARDefault(const RefPtr<IApplicationAssociationRegistration>& pAAR,
     return false;
   }
 
-  LPCWSTR progID = isProtocol ? L"BorealisURL" : L"BorealisHTML";
+  LPCWSTR progID = isProtocol ? L"BNavigatorURL" : L"BNavigatorHTML";
   bool isDefault = !wcsicmp(registeredApp, progID);
   CoTaskMemFree(registeredApp);
 

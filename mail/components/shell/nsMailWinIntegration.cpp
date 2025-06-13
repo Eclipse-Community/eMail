@@ -77,12 +77,12 @@ typedef enum {
 
 // APP_REG_NAME_MAIL and APP_REG_NAME_NEWS should be kept in synch with
 // AppRegNameMail and AppRegNameNews in the installer file: defines.nsi.in
-#define APP_REG_NAME_MAIL L"Interlink"
-#define APP_REG_NAME_NEWS L"Interlink (News)"
-#define CLS_EML "InterlinkEML"
-#define CLS_MAILTOURL "Interlink.Url.mailto"
-#define CLS_NEWSURL "Interlink.Url.news"
-#define CLS_FEEDURL "Interlink.Url.feed"
+#define APP_REG_NAME_MAIL L"MailNews"
+#define APP_REG_NAME_NEWS L"MailNews (News)"
+#define CLS_EML "MailNewsEML"
+#define CLS_MAILTOURL "MailNews.Url.mailto"
+#define CLS_NEWSURL "MailNews.Url.news"
+#define CLS_FEEDURL "MailNews.Url.feed"
 #define SOP "\\shell\\open\\command"
 #define VAL_OPEN "\"%APPPATH%\" \"%1\""
 #define VAL_MAIL_OPEN "\"%APPPATH%\" -osint -mail \"%1\""

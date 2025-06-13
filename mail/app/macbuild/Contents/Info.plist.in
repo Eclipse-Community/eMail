@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>interlink</string>
+	<string>mailnews</string>
 	<key>CFBundleGetInfoString</key>
 	<string>%MAC_APP_NAME% %APP_VERSION%</string>
 	<key>CFBundleIconFile</key>

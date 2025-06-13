@@ -57,10 +57,10 @@ var ShellServiceInternal = {
 // fix this
 #ifdef XP_WIN
     let optOutValue = WindowsRegistry.readRegKey(Components.interfaces.nsIWindowsRegKey.ROOT_KEY_CURRENT_USER,
-                                                 "Software\\Binary Outcast\\Borealis",
+                                                 "Software\\Open Source Contributors\\BNavigator",
                                                  "DefaultBrowserOptOut");
     WindowsRegistry.removeRegKey(Components.interfaces.nsIWindowsRegKey.ROOT_KEY_CURRENT_USER,
-                                 "Software\\Binary Outcast\\Borealis",
+                                 "Software\\Open Source Contributors\\BNavigator",
                                  "DefaultBrowserOptOut");
     if (optOutValue == "True") {
       Services.prefs.setBoolPref("browser.shell.checkDefaultBrowser", false);

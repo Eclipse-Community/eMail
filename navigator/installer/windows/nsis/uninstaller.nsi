@@ -207,7 +207,7 @@ Section "Uninstall"
   ${EndIf}
 
   ; Remove the updates directory for Vista and above
-  ${un.CleanUpdateDirectories} "Mozilla\Borealis" "Mozilla\updates"
+  ${un.CleanUpdateDirectories} "Mozilla\BNavigator" "Mozilla\updates"
 
   ; Remove any app model id's stored in the registry for this install path
   DeleteRegValue HKCU "Software\${CompanyName}\${BrandShortName}\TaskBarIDs" "$INSTDIR"
@@ -227,26 +227,26 @@ Section "Uninstall"
     ${un.SetAppLSPCategories}
   ${EndIf}
 
-  ${un.RegCleanAppHandler} "BorealisURL"
-  ${un.RegCleanAppHandler} "BorealisHTML"
+  ${un.RegCleanAppHandler} "BNavigatorURL"
+  ${un.RegCleanAppHandler} "BNavigatorHTML"
   ${un.RegCleanProtocolHandler} "ftp"
   ${un.RegCleanProtocolHandler} "http"
   ${un.RegCleanProtocolHandler} "https"
 
   ClearErrors
-  ReadRegStr $R9 HKCR "BorealisHTML" ""
+  ReadRegStr $R9 HKCR "BNavigatorHTML" ""
   ; Don't clean up the file handlers if the BorealisHTML key still exists since
   ; there should be a second installation that may be the default file handler
   ${If} ${Errors}
-    ${un.RegCleanFileHandler}  ".htm"   "BorealisHTML"
-    ${un.RegCleanFileHandler}  ".html"  "BorealisHTML"
-    ${un.RegCleanFileHandler}  ".shtml" "BorealisHTML"
-    ${un.RegCleanFileHandler}  ".xht"   "BorealisHTML"
-    ${un.RegCleanFileHandler}  ".xhtml" "BorealisHTML"
-    ${un.RegCleanFileHandler}  ".oga"  "BorealisHTML"
-    ${un.RegCleanFileHandler}  ".ogg"  "BorealisHTML"
-    ${un.RegCleanFileHandler}  ".ogv"  "BorealisHTML"
-    ${un.RegCleanFileHandler}  ".webm"  "BorealisHTML"
+    ${un.RegCleanFileHandler}  ".htm"   "BNavigatorHTML"
+    ${un.RegCleanFileHandler}  ".html"  "BNavigatorHTML"
+    ${un.RegCleanFileHandler}  ".shtml" "BNavigatorHTML"
+    ${un.RegCleanFileHandler}  ".xht"   "BNavigatorHTML"
+    ${un.RegCleanFileHandler}  ".xhtml" "BNavigatorHTML"
+    ${un.RegCleanFileHandler}  ".oga"  "BNavigatorHTML"
+    ${un.RegCleanFileHandler}  ".ogg"  "BNavigatorHTML"
+    ${un.RegCleanFileHandler}  ".ogv"  "BNavigatorHTML"
+    ${un.RegCleanFileHandler}  ".webm"  "BNavigatorHTML"
   ${EndIf}
 
   SetShellVarContext all  ; Set SHCTX to HKLM
@@ -396,7 +396,7 @@ Section "Uninstall"
   ; subsequently deleted after checking. If the value is found during startup
   ; the browser will offer to Reset Borealis. We use the UpdateChannel to match
   ; uninstalls of Borealis-release with reinstalls of Borealis-release, for example.
-  WriteRegStr HKCU "Software\${CompanyName}\Borealis" "Uninstalled-${UpdateChannel}" "True"
+  WriteRegStr HKCU "Software\${CompanyName}\BNavigator" "Uninstalled-${UpdateChannel}" "True"
 
   ${un.IsFirewallSvcRunning}
   Pop $0

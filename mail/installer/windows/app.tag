@@ -1,4 +1,4 @@
 ;!@Install@!UTF-8!
-Title="Mozilla Thunderbird"
+Title="MailNews"
 RunProgram="setup.exe"
 ;!@InstallEnd@!

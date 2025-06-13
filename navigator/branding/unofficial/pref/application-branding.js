@@ -1,7 +1,7 @@
 #filter substitution
 
 // Base URL for web-based support pages.
-pref("app.support.baseURL", "https://rtfreesoft.blogspot.com/p/browser-help.html#mailnews-help");
+pref("app.support.baseURL", "about:blank");
 
 pref("xpinstall.whitelist.required", false);
 // Allow installing XPI add-ons by direct URL requests (no referrer)

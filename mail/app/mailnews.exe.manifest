@@ -3,10 +3,10 @@
 <assemblyIdentity
         version="1.0.0.0"
         processorArchitecture="*"
-        name="Interlink"
+        name="MailNews"
         type="win32"
 />
-<description>Interlink</description>
+<description>MailNews</description>
 <dependency>
         <dependentAssembly>
                 <assemblyIdentity

@@ -50,7 +50,7 @@ Var PageName
 !define NONADMIN_ELEVATE
 
 ; Disabled until a survey url is provided
-!define AbortSurveyURL "http://live.mozillamessaging.com/survey/cancel/?page="
+!define AbortSurveyURL "about:blank"
 
 ; Other included files may depend upon these includes!
 ; The following includes are provided by NSIS.
@@ -369,11 +369,11 @@ Section "-Application" APP_IDX
 
   ; An empty string is used for the 5th param because InterlinkEML is not a
   ; protocol handler
-  ${AddHandlerValues} "$0\InterlinkEML"  "$1" "$8,0" \
+  ${AddHandlerValues} "$0\MailNewsEML"  "$1" "$8,0" \
                       "${AppRegNameMail} Document" "" ""
-  ${AddHandlerValues} "$0\Interlink.Url.mailto"  "$2" "$8,0" \
+  ${AddHandlerValues} "$0\MailNews.Url.mailto"  "$2" "$8,0" \
                       "${AppRegNameMail} URL" "delete" ""
-  ${AddHandlerValues} "$0\Interlink.Url.news" "$3" "$8,0" \
+  ${AddHandlerValues} "$0\MailNews.Url.news" "$3" "$8,0" \
                       "${AppRegNameNews} URL" "delete" ""
 
   ; The following keys should only be set if we can write to HKLM

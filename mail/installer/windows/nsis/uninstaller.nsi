@@ -223,9 +223,9 @@ Section "Uninstall"
     ${un.DeleteShortcuts}
   ${EndIf}
 
-  ${un.RegCleanAppHandler} "Interlink.Url.mailto"
-  ${un.RegCleanAppHandler} "Interlink.Url.news"
-  ${un.RegCleanAppHandler} "InterlinkEML"
+  ${un.RegCleanAppHandler} "MailNews.Url.mailto"
+  ${un.RegCleanAppHandler} "MailNews.Url.news"
+  ${un.RegCleanAppHandler} "MailNewsEML"
   ${un.RegCleanProtocolHandler} "mailto"
   ${un.RegCleanProtocolHandler} "news"
   ${un.RegCleanProtocolHandler} "nntp"
@@ -242,13 +242,13 @@ Section "Uninstall"
   DeleteRegValue HKLM "Software\${CompanyName}\${BrandShortName}\TaskBarIDs" "$INSTDIR"
 
   ClearErrors
-  ReadRegStr $R9 HKCR "InterlinkEML" ""
+  ReadRegStr $R9 HKCR "MailNewsEML" ""
   ; Don't clean up the file handlers if the InterlinkEML key still exists
   ; since there could be a second installation that may be the default file
   ; handler.
   ${If} ${Errors}
-    ${un.RegCleanFileHandler}  ".eml"   "InterlinkEML"
-    ${un.RegCleanFileHandler}  ".wdseml" "InterlinkEML"
+    ${un.RegCleanFileHandler}  ".eml"   "MailNewsEML"
+    ${un.RegCleanFileHandler}  ".wdseml" "MailNewsEML"
     DeleteRegValue HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\explorer\KindMap" ".wdseml"
     ; It doesn't matter if the value didn't exist
     ClearErrors

@@ -1,4 +1,4 @@
 ;!@Install@!UTF-8!
-Title="Setup"
+Title="BNavigator"
 RunProgram="setup.exe"
 ;!@InstallEnd@!

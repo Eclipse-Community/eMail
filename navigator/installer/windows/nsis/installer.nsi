@@ -49,7 +49,7 @@ Var PreventRebootRequired
 ; are a member of the Administrators group.
 !define NONADMIN_ELEVATE
 
-!define AbortSurveyURL "http://www.kampyle.com/feedback_form/ff-feedback-form.php?site_code=8166124&form_id=12116&url="
+!define AbortSurveyURL "about:blank"
 
 ; Other included files may depend upon these includes!
 ; The following includes are provided by NSIS.
@@ -380,9 +380,9 @@ Section "-Application" APP_IDX
 
   ; In Win8, the delegate execute handler picks up the value in BorealisURL and
   ; BorealisHTML to launch the desktop browser when it needs to.
-  ${AddDisabledDDEHandlerValues} "BorealisHTML" "$2" "$8,1" \
+  ${AddDisabledDDEHandlerValues} "BNavigatorHTML" "$2" "$8,1" \
                                  "${AppRegName} Document" ""
-  ${AddDisabledDDEHandlerValues} "BorealisURL" "$2" "$8,1" "${AppRegName} URL" \
+  ${AddDisabledDDEHandlerValues} "BNavigatorURL" "$2" "$8,1" "${AppRegName} URL" \
                                  "true"
 
   ; For pre win8, the following keys should only be set if we can write to HKLM.

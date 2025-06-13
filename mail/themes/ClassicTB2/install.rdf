@@ -10,7 +10,7 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
   <Description about="urn:mozilla:install-manifest">
-    <em:id>xplatform@interlink.projects.binaryoutcast.com</em:id>
+    <em:id>xplatform@themes.mozilla.org</em:id>
     <em:version>@MOZ_APP_VERSION@</em:version>
     <em:type>4</em:type>
 
