@@ -1,6 +1,4 @@
-<center>
-<img src="./mail/branding/official/default256.png" height="150px">
-</center>
+ <span style="display:block;text-align:center">![Eclipse eMail](./mail/branding/official/banner.png)</span>
 <br>
 
 eMail is a fork of the open source email client Interlink Mail and News, or UXP Thunderbird made for Windows XP and IA-32 i686 processors.
