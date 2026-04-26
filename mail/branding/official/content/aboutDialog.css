@@ -3,10 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #aboutDialogContainer {
-  background-image: linear-gradient(to bottom, #2f0856 0%, #180133 93%, #15002b 97%, #0f001f 100%);
+  background-image: linear-gradient(to top, #c0c0c0 0%,#ffffff 100%);
   background-repeat: no-repeat;
-  background-color: #180133;
-  color: #eee;
+  background-color: #ffa26f;
+  color: #000;
 }
 
 #leftBox {
@@ -21,7 +21,7 @@
 }
 
 .text-link {
-  color: #b967e5 !important;
+  color: #6808a0 !important;
 }
 
 .bottom-link {
