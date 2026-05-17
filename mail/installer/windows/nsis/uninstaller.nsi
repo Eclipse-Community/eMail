@@ -93,7 +93,7 @@ VIAddVersionKey "OriginalFilename" "helper.exe"
 
 !insertmacro un.ChangeMUIHeaderImage
 !insertmacro un.CheckForFilesInUse
-!insertmacro un.CleanUpdatesDir
+!insertmacro un.CleanUpdateDirectories
 !insertmacro un.CleanVirtualStore
 !insertmacro un.DeleteShortcuts
 !insertmacro un.GetLongPath
@@ -321,7 +321,7 @@ Section "Uninstall"
   ${EndIf}
 
   ; Remove the updates directory for Vista and above
-  ${un.CleanUpdatesDir} "${BrandShortName}"
+  ${un.CleanUpdateDirectories} "${CompanyName}\${BrandShortName}" "${CompanyName}\updates"
 
   ; Remove files that may be left behind by the application in the
   ; VirtualStore directory.
