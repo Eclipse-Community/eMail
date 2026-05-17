@@ -207,7 +207,7 @@ Section "Uninstall"
   ${EndIf}
 
   ; Remove the updates directory for Vista and above
-  ${un.CleanUpdateDirectories} "Mozilla\BNavigator" "Mozilla\updates"
+  ${un.CleanUpdateDirectories} "${CompanyName}\${BrandShortName}" "${CompanyName}\updates"
 
   ; Remove any app model id's stored in the registry for this install path
   DeleteRegValue HKCU "Software\${CompanyName}\${BrandShortName}\TaskBarIDs" "$INSTDIR"
@@ -396,7 +396,7 @@ Section "Uninstall"
   ; subsequently deleted after checking. If the value is found during startup
   ; the browser will offer to Reset Borealis. We use the UpdateChannel to match
   ; uninstalls of Borealis-release with reinstalls of Borealis-release, for example.
-  WriteRegStr HKCU "Software\${CompanyName}\BNavigator" "Uninstalled-${UpdateChannel}" "True"
+  WriteRegStr HKCU "Software\${CompanyName}\${BrandShortName}" "Uninstalled-${UpdateChannel}" "True"
 
   ${un.IsFirewallSvcRunning}
   Pop $0
