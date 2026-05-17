@@ -13,7 +13,7 @@ JS_PREFERENCE_FILES += [
 
 if CONFIG['MOZ_WIDGET_TOOLKIT'] == 'windows':
   FINAL_TARGET_FILES += [
-      'thunderbird.VisualElementsManifest.xml',
+      'eMail.VisualElementsManifest.xml',
   ]
   FINAL_TARGET_FILES.VisualElements += [
       'VisualElements_150.png',
