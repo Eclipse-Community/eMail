@@ -22,6 +22,7 @@
     <key id="key_newTabWithTargetFg" keycode="VK_INSERT" modifiers="alt" command="cmd_newTabWithTarget"/>
     <!-- Add additional sanitize keybinding for Macs without a delete key -->
     <key id="key_sanitize_mac" command="Tools:Sanitize" keycode="VK_BACK" modifiers="accel,shift"/>
+    <key id="key_quitApplication" key="Q" modifiers="accel" reserved="true"/>
   </keyset>
 
   <toolbarbutton id="minimize-button" hidden="true"/>

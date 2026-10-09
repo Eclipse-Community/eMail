@@ -59,5 +59,19 @@
   <key id="key_newMessage2" key="&newMessageCmd2.key;" command="cmd_newMessage"
        modifiers="accel"/>
 #endif
+
+    <key id="key_quitApplication" key="Q"
+#ifdef XP_WIN
+         modifiers="accel,shift"
+#else
+         modifiers="accel"
+#endif
+# On OS X, dark voodoo magic invokes the quit code for this key.
+# So we're not adding the attribute on OSX because of backwards/add-on compat.
+# See bug 1369909 for background on this.
+#ifndef XP_MACOSX
+         oncommand="goQuitApplication()"
+#endif
+         reserved="true"/>
   </keyset>
 </overlay>
