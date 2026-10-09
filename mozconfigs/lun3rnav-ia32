@@ -35,7 +35,7 @@ ac_add_options --disable-debug
 ac_add_options --disable-debug-js-modules
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-tests
-ac_add_options --enable-devtools
+#ac_add_options --enable-devtools
 #ac_add_options --enable-install-strip
 ac_add_options --enable-jemalloc
 ac_add_options --enable-js-lto
