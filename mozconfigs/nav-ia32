@@ -5,11 +5,13 @@
 # 16 jobs for 16 cores
 mk_add_options MOZ_MAKE_FLAGS="-j16"
 
-# x86 build
+# x86 IA-32 build
 ac_add_options --host=i686-pc-mingw32
 ac_add_options --target=i686-pc-mingw32
 WIN32_REDIST_DIR="${VCINSTALLDIR}/Redist/x86/Microsoft.VC141.CRT"
 WIN_UCRT_REDIST_DIR="${WINDOWSSDKDIR}/Redist/ucrt/DLLs/r86"
+ac_add_options --enable-ia-32
+mk_add_options MOZ_OBJDIR=obj-ia32-nav-pc-mingw32
 
 # Build only Lun3r Navigator
 ac_add_options --enable-project=navigator
@@ -30,7 +32,7 @@ ac_add_options --enable-devtools
 #ac_add_options --enable-install-strip
 ac_add_options --enable-jemalloc
 ac_add_options --enable-js-lto
-ac_add_options --enable-optimize="-arch:IA32 -O2 -Ob2ity- -GS- -GFAT -Qpar -Qfast_transcendentals -openmp -std:c++17 -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -wd5043"
+ac_add_options --enable-optimize="-O2 -Ob2ity- -GS- -GFAT -Qpar -Qfast_transcendentals -openmp -std:c++17 -D_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS -wd5043"
 ac_add_options --enable-phoenix-extensions
 ac_add_options --enable-release
 ac_add_options --enable-shared-js
@@ -60,7 +62,6 @@ export MOZ_INCLUDE_SOURCE_INFO=1
 export MOZ_REQUIRE_SIGNING=
 export MOZ_SOURCE_CHANGESET=iloveneedingtobodgechangesetfornoreason
 export MOZ_TELEMETRY_REPORTING=
-export MOZ_PACKAGE_JSSHELL=1
 
 # Set -Copt-level=3
 export OPT_LEVEL="3"
@@ -71,9 +72,9 @@ export MOZ_LTO=1
 ac_add_options MOZ_LTO=1
 
 # Compiler and Linker flags
-export CFLAGS="-arch:IA32 -O2"
-export CPPFLAGS="-arch:IA32 -O2"
-export CXXFLAGS="-arch:IA32 -O2"
+export CFLAGS="-O2"
+export CPPFLAGS="-O2"
+export CXXFLAGS="-O2"
 #export LDFLAGS="/opt:REF,ICF"
 export POLLY="-mllvm -polly -mllvm -polly-2nd-level-tiling -mllvm -polly-loopfusion-greedy -mllvm -polly-pattern-matching-based-opts -mllvm -polly-position=before-vectorizer -mllvm -polly-vectorizer=stripmine"
 export VERBOSE=1
