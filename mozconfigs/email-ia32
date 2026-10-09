@@ -8,7 +8,6 @@ ac_add_options --with-app-name=eMail
 ac_add_options --with-app-basename=eMail
 export MOZ_OFFICIAL_BRANDING=1
 export MC_OFFICIAL=1
-export EMAIL_VERSION=1
 
 # 16 jobs for 16 cores
 mk_add_options MOZ_MAKE_FLAGS="-j16"
